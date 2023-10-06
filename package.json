@@ -21,6 +21,7 @@
     "expo-font": "~11.4.0",
     "expo-linking": "~5.0.2",
     "expo-router": "^2.0.0",
+    "expo-secure-store": "~12.3.1",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
@@ -33,11 +34,13 @@
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-web": "~0.19.6",
-    "expo-secure-store": "~12.3.1"
+    "expo-haptics": "~12.4.0",
+    "expo-blur": "~12.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.14",
+    "@types/react-native": "^0.72.3",
     "jest": "^29.2.1",
     "jest-expo": "~49.0.0",
     "react-test-renderer": "18.2.0",

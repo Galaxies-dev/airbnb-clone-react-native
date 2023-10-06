@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import ExploreHeader from '@/components/ExploreHeader';
 
 const Layout = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const Layout = () => {
       <Tabs.Screen
         name="index"
         options={{
+          header: () => <ExploreHeader />,
           tabBarLabel: 'Explore',
           tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />,
         }}

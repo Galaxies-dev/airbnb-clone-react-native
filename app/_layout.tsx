@@ -1,11 +1,11 @@
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack, useRouter } from 'expo-router';
 import { useEffect } from 'react';
-import React from 'react';
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 // Cache the Clerk JWT
@@ -69,15 +69,6 @@ function RootLayoutNav() {
     }
   }, [isLoaded]);
 
-  useEffect(() => {
-    if (isSignedIn) {
-      console.log('user is signed in!');
-      if (router.canGoBack()) {
-        router.back();
-      }
-    }
-  }, [isSignedIn]);
-
   return (
     <Stack>
       <Stack.Screen
@@ -96,6 +87,28 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="listing/[id]" options={{ headerTransparent: true }} />
+      <Stack.Screen
+        name="(modals)/booking"
+        options={{
+          presentation: 'transparentModal',
+          animation: 'fade',
+          title: '',
+          headerTransparent: true,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              style={{
+                backgroundColor: '#fff',
+                borderColor: Colors.grey,
+                borderRadius: 20,
+                borderWidth: 1,
+              }}>
+              <Ionicons name="close-outline" size={28} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack>
   );
 }

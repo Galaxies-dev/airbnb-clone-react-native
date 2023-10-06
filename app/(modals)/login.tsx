@@ -8,6 +8,7 @@ import * as WebBrowser from 'expo-web-browser';
 
 // https://github.com/clerkinc/clerk-expo-starter/blob/main/components/OAuth.tsx
 import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser';
+import { defaultStyles } from '@/constants/Styles';
 WebBrowser.maybeCompleteAuthSession();
 
 enum Strategy {
@@ -48,8 +49,8 @@ const Page = () => {
     <View style={styles.container}>
       <TextInput autoCapitalize="none" placeholder="Email" style={styles.inputField} />
 
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.btnText}>Continue</Text>
+      <TouchableOpacity style={defaultStyles.btn}>
+        <Text style={defaultStyles.btnText}>Continue</Text>
       </TouchableOpacity>
 
       <View style={styles.seperatorView}>
@@ -72,22 +73,22 @@ const Page = () => {
 
       <View style={{ gap: 20 }}>
         <TouchableOpacity style={styles.btnOutline}>
-          <Ionicons name="mail-outline" size={24} style={styles.icon} />
+          <Ionicons name="mail-outline" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Phone</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnOutline} onPress={() => onSelectAuth(Strategy.Apple)}>
-          <Ionicons name="md-logo-apple" size={24} style={styles.icon} />
+          <Ionicons name="md-logo-apple" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Apple</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnOutline} onPress={() => onSelectAuth(Strategy.Google)}>
-          <Ionicons name="md-logo-google" size={24} style={styles.icon} />
+          <Ionicons name="md-logo-google" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Google</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnOutline} onPress={() => onSelectAuth(Strategy.Facebook)}>
-          <Ionicons name="md-logo-facebook" size={24} style={styles.icon} />
+          <Ionicons name="md-logo-facebook" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Facebook</Text>
         </TouchableOpacity>
       </View>
@@ -112,18 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginBottom: 30,
   },
-  btn: {
-    backgroundColor: Colors.primary,
-    height: 50,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnText: {
-    color: '#fff',
-    fontSize: 16,
-    fontFamily: 'mon-b',
-  },
+
   seperatorView: {
     flexDirection: 'row',
     gap: 10,
@@ -150,9 +140,5 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 16,
     fontFamily: 'mon-sb',
-  },
-  icon: {
-    position: 'absolute',
-    left: 16,
   },
 });
