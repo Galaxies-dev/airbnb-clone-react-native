@@ -5,8 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { Link } from 'expo-router';
-import Animated from 'react-native-reanimated';
-import { sharedElementTransition } from '@/utils/headerTransition';
 
 const categories = [
   {
@@ -61,13 +59,13 @@ const ExploreHeader = () => {
         <View style={styles.actionRow}>
           <Link href={'/(modals)/booking'} asChild>
             <TouchableOpacity>
-              <Animated.View style={styles.searchBtn} sharedTransitionTag="booking">
+              <View style={styles.searchBtn}>
                 <Ionicons name="search" size={24} />
                 <View>
                   <Text style={{ fontWeight: '600' }}>Where to?</Text>
                   <Text style={{ color: Colors.grey }}>Anywhere · Any week</Text>
                 </View>
-              </Animated.View>
+              </View>
             </TouchableOpacity>
           </Link>
           <TouchableOpacity style={styles.filterBtn}>

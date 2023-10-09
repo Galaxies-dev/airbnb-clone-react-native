@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
+import Animated, { SlideInDown, StretchInY } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { TextInput } from 'react-native-gesture-handler';
@@ -10,16 +10,16 @@ import { defaultStyles } from '@/constants/Styles';
 const Page = () => {
   return (
     <BlurView intensity={60} style={styles.container} tint="light">
-      <Animated.View style={styles.card} sharedTransitionTag="booking">
+      <Animated.View style={styles.card} entering={StretchInY.springify()}>
         <Text style={{ fontWeight: '600', fontSize: 26 }}>Where to?</Text>
 
-        <Animated.View style={styles.searchSection} entering={FadeIn.delay(400)}>
+        <View style={styles.searchSection}>
           <Ionicons style={styles.searchIcon} name="ios-search" size={20} color="#000" />
           <TextInput style={styles.inputField} placeholder="Search destinations" />
-        </Animated.View>
+        </View>
       </Animated.View>
 
-      <Animated.View style={styles.footer} entering={SlideInDown} exiting={SlideOutDown}>
+      <Animated.View style={styles.footer} entering={SlideInDown.delay(200)}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <TouchableOpacity style={{ height: '100%', justifyContent: 'center' }}>
             <Text
