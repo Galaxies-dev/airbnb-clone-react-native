@@ -20,8 +20,8 @@ const categories = [
     icon: 'local-fire-department',
   },
   {
-    name: 'Mansions',
-    icon: 'home',
+    name: 'Play',
+    icon: 'videogame-asset',
   },
   {
     name: 'City',
@@ -44,9 +44,8 @@ const ExploreHeader = () => {
 
   const selectCategory = (index: number) => {
     const selected = itemsRef.current[index];
-    console.log('🚀 ~ file: ExploreHeader.tsx:46 ~ selectCategory ~ selected:', selected);
     setActiveIndex(index);
-    // Scroll segment list
+
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     selected?.measure((x) => {
       scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true });
@@ -62,8 +61,8 @@ const ExploreHeader = () => {
               <View style={styles.searchBtn}>
                 <Ionicons name="search" size={24} />
                 <View>
-                  <Text style={{ fontWeight: '600' }}>Where to?</Text>
-                  <Text style={{ color: Colors.grey }}>Anywhere · Any week</Text>
+                  <Text style={{ fontFamily: 'mon-sb' }}>Where to?</Text>
+                  <Text style={{ color: Colors.grey, fontFamily: 'mon' }}>Anywhere · Any week</Text>
                 </View>
               </View>
             </TouchableOpacity>
