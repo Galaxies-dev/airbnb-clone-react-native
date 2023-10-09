@@ -19,8 +19,9 @@ const Page = () => {
         </View>
       </Animated.View>
 
-      <Animated.View style={styles.footer} entering={SlideInDown.delay(200)}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Animated.View style={defaultStyles.footer} entering={SlideInDown.delay(200)}>
+        <View
+          style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <TouchableOpacity style={{ height: '100%', justifyContent: 'center' }}>
             <Text
               style={{
@@ -84,21 +85,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: '#fff',
-  },
-  footer: {
-    position: 'absolute',
-    height: 100,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: '#fff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    elevation: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -10 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
   },
 });
 export default Page;
