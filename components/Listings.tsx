@@ -1,18 +1,45 @@
-import { View, Text, StyleSheet, FlatList, ListRenderItem, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ListRenderItem, TouchableOpacity } from 'react-native';
 import { defaultStyles } from '@/constants/Styles';
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
-import Animated from 'react-native-reanimated';
+import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated';
+import { useEffect, useRef, useState } from 'react';
+import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 
 interface Props {
   listings: any[];
+  refresh: number;
+  category: string;
 }
 
-const Listings = ({ listings: items }: Props) => {
+const Listings = ({ listings: items, refresh, category }: Props) => {
+  const listRef = useRef<BottomSheetFlatListMethods>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (refresh) {
+      scrollListTop();
+    }
+  }, [refresh]);
+
+  const scrollListTop = () => {
+    listRef.current?.scrollToOffset({ offset: 0, animated: true });
+  };
+
+  useEffect(() => {
+    console.log('REFRESH DATA');
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
+  }, [category]);
+
   const renderRow: ListRenderItem<any> = ({ item }) => (
     <Link href={`/listing/${item.id}`} asChild>
       <TouchableOpacity>
-        <View style={styles.listing}>
+        <Animated.View style={styles.listing} entering={FadeInRight} exiting={FadeOutLeft}>
           <Animated.Image source={{ uri: item.medium_url }} style={styles.image} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ fontSize: 16, fontFamily: 'mon-sb' }}>{item.name}</Text>
@@ -26,16 +53,17 @@ const Listings = ({ listings: items }: Props) => {
             <Text style={{ fontFamily: 'mon-sb' }}>€ {item.price}</Text>
             <Text style={{ fontFamily: 'mon' }}>night</Text>
           </View>
-        </View>
+        </Animated.View>
       </TouchableOpacity>
     </Link>
   );
 
   return (
     <View style={defaultStyles.container}>
-      <FlatList
+      <BottomSheetFlatList
         renderItem={renderRow}
-        data={items}
+        data={loading ? [] : items}
+        ref={listRef}
         ListHeaderComponent={<Text style={styles.info}>{items.length} homes</Text>}
       />
     </View>
@@ -55,9 +83,9 @@ const styles = StyleSheet.create({
   },
   info: {
     textAlign: 'center',
-    fontFamily: 'mon',
+    fontFamily: 'mon-sb',
     fontSize: 16,
-    marginVertical: 4,
+    marginTop: 4,
   },
 });
 
