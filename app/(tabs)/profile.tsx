@@ -24,6 +24,7 @@ const Page = () => {
   const [email, setEmail] = useState(user?.emailAddresses[0].emailAddress);
   const [edit, setEdit] = useState(false);
 
+  // Load user data on mount
   useEffect(() => {
     if (!user) {
       return;
@@ -34,6 +35,7 @@ const Page = () => {
     setEmail(user.emailAddresses[0].emailAddress);
   }, [user]);
 
+  // Update Clerk user data
   const onSaveUser = async () => {
     try {
       await user?.update({
@@ -47,6 +49,8 @@ const Page = () => {
     }
   };
 
+  // Capture image from camera roll
+  // Upload to Clerk as avatar
   const onCaptureImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,

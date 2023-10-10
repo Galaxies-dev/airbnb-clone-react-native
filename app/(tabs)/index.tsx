@@ -8,7 +8,7 @@ import { Stack } from 'expo-router';
 import ExploreHeader from '@/components/ExploreHeader';
 
 const Page = () => {
-  const items = useMemo(() => listingsData, []);
+  const items = useMemo(() => listingsData as any, []);
   const getoItems = useMemo(() => listingsDataGeo, []);
   const [category, setCategory] = useState<string>('Tiny homes');
 
@@ -18,6 +18,7 @@ const Page = () => {
 
   return (
     <View style={{ flex: 1, marginTop: 80 }}>
+      {/* Define pour custom header */}
       <Stack.Screen
         options={{
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,

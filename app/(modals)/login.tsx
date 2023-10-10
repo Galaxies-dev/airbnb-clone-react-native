@@ -2,7 +2,7 @@ import Colors from '@/constants/Colors';
 import { useOAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { View, StyleSheet, TextInput, Button, Pressable, Text, Alert } from 'react-native';
+import { View, StyleSheet, TextInput, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -33,10 +33,8 @@ const Page = () => {
 
     try {
       const { createdSessionId, setActive } = await selectedAuth();
-      console.log('🚀 ~ file: login.tsx:17 ~ onGoogleAuth ~ createdSessionId:', createdSessionId);
 
       if (createdSessionId) {
-        console.log('OAuth session created', createdSessionId);
         setActive!({ session: createdSessionId });
         router.back();
       }

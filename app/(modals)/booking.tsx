@@ -1,12 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, Image, SafeAreaView } from 'react-native';
 import { useState } from 'react';
-import Animated, {
-  FadeIn,
-  FadeOut,
-  Layout,
-  SlideInDown,
-  StretchInY,
-} from 'react-native-reanimated';
+import Animated, { FadeIn, FadeOut, SlideInDown } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { TextInput } from 'react-native-gesture-handler';
@@ -44,12 +38,11 @@ const guestsGropus = [
 ];
 
 const Page = () => {
-  const [openCard, setOpenCard] = useState(1);
+  const [openCard, setOpenCard] = useState(0);
   const [selectedPlace, setSelectedPlace] = useState(0);
   const [groups, setGroups] = useState(guestsGropus);
   const router = useRouter();
   const today = new Date().toISOString().substring(0, 10);
-  console.log('🚀 ~ file: booking.tsx:46 ~ Page ~ today:', today);
 
   const onClearAll = () => {
     setSelectedPlace(0);
@@ -131,7 +124,7 @@ const Page = () => {
 
       {/* Guests */}
       <View style={styles.card}>
-        {openCard == 2 && <Text style={styles.cardHeader}>Who's comin?</Text>}
+        {openCard == 2 && <Text style={styles.cardHeader}>Who's coming?</Text>}
         {openCard != 2 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(2)}

@@ -10,6 +10,7 @@ interface Props {
   category: string;
 }
 
+// Bottom sheet that wraps our Listings component
 const ListingsBottomSheet = ({ listings, category }: Props) => {
   const snapPoints = useMemo(() => ['10%', '100%'], []);
   const bottomSheetRef = useRef<BottomSheet>(null);

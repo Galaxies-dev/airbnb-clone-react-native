@@ -23,14 +23,17 @@ const ListingsMap = memo(({ listings }: Props) => {
   const router = useRouter();
   const mapRef = useRef<any>(null);
 
+  // When the component mounts, locate the user
   useEffect(() => {
     onLocateMe();
   }, []);
 
+  // When a marker is selected, navigate to the listing page
   const onMarkerSelected = (event: any) => {
     router.push(`/listing/${event.properties.id}`);
   };
 
+  // Focus the map on the user's location
   const onLocateMe = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -49,9 +52,9 @@ const ListingsMap = memo(({ listings }: Props) => {
     mapRef.current?.animateToRegion(region);
   };
 
+  // Overwrite the renderCluster function to customize the cluster markers
   const renderCluster = (cluster: any) => {
     const { id, geometry, onPress, properties } = cluster;
-    console.log('render cluster');
 
     const points = properties.point_count;
     return (
@@ -87,6 +90,7 @@ const ListingsMap = memo(({ listings }: Props) => {
         clusterTextColor="#000"
         clusterFontFamily="mon-sb"
         renderCluster={renderCluster}>
+        {/* Render all our marker as usual */}
         {listings.features.map((item: any) => (
           <Marker
             coordinate={{

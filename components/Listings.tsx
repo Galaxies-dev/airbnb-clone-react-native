@@ -16,6 +16,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
   const listRef = useRef<BottomSheetFlatListMethods>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
+  // Update the view to scroll the list back top
   useEffect(() => {
     if (refresh) {
       scrollListTop();
@@ -26,6 +27,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
     listRef.current?.scrollToOffset({ offset: 0, animated: true });
   };
 
+  // Use for "updating" the views data after category changed
   useEffect(() => {
     setLoading(true);
 
@@ -34,6 +36,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
     }, 200);
   }, [category]);
 
+  // Render one listing row for the FlatList
   const renderRow: ListRenderItem<any> = ({ item }) => (
     <Link href={`/listing/${item.id}`} asChild>
       <TouchableOpacity>
