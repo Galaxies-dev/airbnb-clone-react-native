@@ -6,6 +6,7 @@ import * as SecureStore from 'expo-secure-store';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import ModalHeaderText from '@/components/ModalHeaderText';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 // Cache the Clerk JWT
@@ -93,8 +94,8 @@ function RootLayoutNav() {
         options={{
           presentation: 'transparentModal',
           animation: 'fade',
-          title: '',
           headerTransparent: true,
+          headerTitle: (props) => <ModalHeaderText />,
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => router.back()}
@@ -103,8 +104,9 @@ function RootLayoutNav() {
                 borderColor: Colors.grey,
                 borderRadius: 20,
                 borderWidth: 1,
+                padding: 4,
               }}>
-              <Ionicons name="close-outline" size={28} />
+              <Ionicons name="close-outline" size={22} />
             </TouchableOpacity>
           ),
         }}
