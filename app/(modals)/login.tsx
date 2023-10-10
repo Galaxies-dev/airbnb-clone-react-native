@@ -47,7 +47,11 @@ const Page = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput autoCapitalize="none" placeholder="Email" style={styles.inputField} />
+      <TextInput
+        autoCapitalize="none"
+        placeholder="Email"
+        style={[defaultStyles.inputField, { marginBottom: 30 }]}
+      />
 
       <TouchableOpacity style={defaultStyles.btn}>
         <Text style={defaultStyles.btnText}>Continue</Text>
@@ -103,15 +107,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 26,
-  },
-  inputField: {
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#ABABAB',
-    borderRadius: 8,
-    padding: 10,
-    backgroundColor: '#fff',
-    marginBottom: 30,
   },
 
   seperatorView: {
