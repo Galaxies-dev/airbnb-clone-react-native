@@ -2,14 +2,11 @@ import Colors from '@/constants/Colors';
 import { useOAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { View, StyleSheet, TextInput, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import * as WebBrowser from 'expo-web-browser';
+import { View, StyleSheet, TextInput, Text, TouchableOpacity } from 'react-native';
 
 // https://github.com/clerkinc/clerk-expo-starter/blob/main/components/OAuth.tsx
 import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser';
 import { defaultStyles } from '@/constants/Styles';
-WebBrowser.maybeCompleteAuthSession();
 
 enum Strategy {
   Google = 'oauth_google',

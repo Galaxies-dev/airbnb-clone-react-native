@@ -40,6 +40,7 @@ const guestsGropus = [
 const Page = () => {
   const [openCard, setOpenCard] = useState(0);
   const [selectedPlace, setSelectedPlace] = useState(0);
+
   const [groups, setGroups] = useState(guestsGropus);
   const router = useRouter();
   const today = new Date().toISOString().substring(0, 10);
@@ -51,8 +52,8 @@ const Page = () => {
 
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
+      {/*  Where */}
       <View style={styles.card}>
-        {openCard == 0 && <Text style={styles.cardHeader}>Where to?</Text>}
         {openCard != 0 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(0)}
@@ -63,6 +64,8 @@ const Page = () => {
             <Text style={styles.previewdData}>I'm flexible</Text>
           </AnimatedTouchableOpacity>
         )}
+
+        {openCard == 0 && <Text style={styles.cardHeader}>Where to?</Text>}
         {openCard == 0 && (
           <Animated.View entering={FadeIn} exiting={FadeOut} style={styles.cardBody}>
             <View style={styles.searchSection}>
@@ -92,8 +95,8 @@ const Page = () => {
         )}
       </View>
 
+      {/* When */}
       <View style={styles.card}>
-        {openCard == 1 && <Text style={styles.cardHeader}>When's your trip?</Text>}
         {openCard != 1 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(1)}
@@ -104,6 +107,8 @@ const Page = () => {
             <Text style={styles.previewdData}>Any week</Text>
           </AnimatedTouchableOpacity>
         )}
+
+        {openCard == 1 && <Text style={styles.cardHeader}>When's your trip?</Text>}
 
         {openCard == 1 && (
           <Animated.View style={styles.cardBody}>
@@ -124,7 +129,6 @@ const Page = () => {
 
       {/* Guests */}
       <View style={styles.card}>
-        {openCard == 2 && <Text style={styles.cardHeader}>Who's coming?</Text>}
         {openCard != 2 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(2)}
@@ -135,6 +139,8 @@ const Page = () => {
             <Text style={styles.previewdData}>Add guests</Text>
           </AnimatedTouchableOpacity>
         )}
+
+        {openCard == 2 && <Text style={styles.cardHeader}>Who's coming?</Text>}
 
         {openCard == 2 && (
           <Animated.View style={styles.cardBody}>
@@ -151,6 +157,7 @@ const Page = () => {
                     {item.text}
                   </Text>
                 </View>
+
                 <View
                   style={{
                     flexDirection: 'row',
@@ -258,7 +265,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
   },
-  cardPreview: { flexDirection: 'row', justifyContent: 'space-between', padding: 20 },
+  cardPreview: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
 
   searchSection: {
     height: 50,
