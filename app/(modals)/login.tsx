@@ -77,17 +77,17 @@ const Page = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnOutline} onPress={() => onSelectAuth(Strategy.Apple)}>
-          <Ionicons name="md-logo-apple" size={24} style={defaultStyles.btnIcon} />
+          <Ionicons name="logo-apple" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Apple</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnOutline} onPress={() => onSelectAuth(Strategy.Google)}>
-          <Ionicons name="md-logo-google" size={24} style={defaultStyles.btnIcon} />
+          <Ionicons name="logo-google" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Google</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnOutline} onPress={() => onSelectAuth(Strategy.Facebook)}>
-          <Ionicons name="md-logo-facebook" size={24} style={defaultStyles.btnIcon} />
+          <Ionicons name="logo-facebook" size={24} style={defaultStyles.btnIcon} />
           <Text style={styles.btnOutlineText}>Continue with Facebook</Text>
         </TouchableOpacity>
       </View>

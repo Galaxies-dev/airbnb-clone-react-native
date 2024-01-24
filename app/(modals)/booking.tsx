@@ -69,7 +69,7 @@ const Page = () => {
         {openCard == 0 && (
           <Animated.View entering={FadeIn} exiting={FadeOut} style={styles.cardBody}>
             <View style={styles.searchSection}>
-              <Ionicons style={styles.searchIcon} name="ios-search" size={20} color="#000" />
+              <Ionicons style={styles.searchIcon} name="search" size={20} color="#000" />
               <TextInput
                 style={styles.inputField}
                 placeholder="Search destinations"

@@ -7,4 +7,8 @@ const config = getDefaultConfig(__dirname, {
   isCSSEnabled: true,
 });
 
+
+
+config.resolver.sourceExts.push('cjs', 'mjs');
+
 module.exports = config;

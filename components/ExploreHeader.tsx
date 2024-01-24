@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity, Platform } from 'react-native';
 import { useRef, useState } from 'react';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -52,12 +52,15 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
     selected?.measure((x) => {
       scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true });
     });
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+
+    if (Platform.OS !== 'web') {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
     onCategoryChanged(categories[index].name);
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.actionRow}>
           <Link href={'/(modals)/booking'} asChild>
