@@ -26,3 +26,10 @@ Additional features:
 
 ![Demo](./screenshots/demo.gif)
 
+## 🚀 More
+
+**Take a shortcut from web developer to mobile development fluency with guided learning**
+
+Enjoyed this project? Learn to use React Native to build production-ready, native mobile apps for both iOS and Android based on your existing web development skills.
+
+<a href="https://galaxies.dev"><img src="banner.png" height="auto" width="100%"></a>
